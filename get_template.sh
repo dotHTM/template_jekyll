@@ -2,7 +2,7 @@
 # get_template.sh
 
 
-projectName=$1 && shift
+projectName=''
 
 if [[ -z $projectName ]]; then
     read -p "What do you want to call it? > " projectName
