@@ -3,8 +3,13 @@
 
 read -p "What do you want to call it? > " projectName
 
-git clone https://github.com/dotHTM/template_jekyll.git "$projectName"
-
+if [[ -z $projectName ]]; then
+    projectName='sample_template'
+fi
+    
+if [[ -n $projectName ]]; then
+    git clone https://github.com/dotHTM/template_jekyll.git "$projectName"
+fi
 
 if [[ -e "$projectName/.git" ]]; then
     #statements
