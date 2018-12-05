@@ -1,7 +1,14 @@
 #!/bin/bash
 # get_template.sh
 
-git clone https://github.com/dotHTM/template_jekyll.git
+
+projectName=$1 && shift
+
+if [[ -z $projectName ]]; then
+    read -p "What do you want to call it? > " projectName
+fi
+
+git clone https://github.com/dotHTM/template_jekyll.git "$projectName"
 cd template_jekyll
 rm -rf .git
 rm get_template.sh
