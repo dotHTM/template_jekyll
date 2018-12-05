@@ -1,12 +1,7 @@
 #!/bin/bash
 # get_template.sh
 
-
-projectName=''
-
-if [[ -z $projectName ]]; then
-    read -p "What do you want to call it? > " projectName
-fi
+read -p "What do you want to call it? > " projectName
 
 git clone https://github.com/dotHTM/template_jekyll.git "$projectName"
 cd template_jekyll
@@ -28,7 +23,6 @@ if [[ -n $editor ]]; then
     $editor ./README.md
 fi
 
-
 # --- # --- # --- # --- # --- # --- # --- # --- 
 # Open in Git helper
 
@@ -40,3 +34,4 @@ fi
 if [[ -n $gitHelper ]]; then
     $gitHelper ./
 fi
+
