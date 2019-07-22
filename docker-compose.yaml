@@ -3,18 +3,18 @@ services:
   jekyll:
     # image: dothtm/alpine_jekyll_grunt:latest
     build: 
-      context: ./
+      context: ./docker
       dockerfile: jekyll-grunt.dockerfile
+    volumes:
+      - "./source:/app/source"
     ports:
       - "4000:4000"
     entrypoint: "/jekyll_entry.sh"
 
-  grunt:
-    # image: dothtm/alpine_jekyll_grunt:latest
-    build: 
-      context: ./
-      dockerfile: jekyll-grunt.dockerfile
+  apache:
+    image: httpd
+    volumes:
+      - "./source/_site:/usr/local/apache2/htdocs"
     ports:
-      - "35729:35729"
-    entrypoint: "/grunt_entry.sh"
-
+      - "80:80"
+      - "443:443"

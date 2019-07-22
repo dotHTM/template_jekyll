@@ -2,12 +2,14 @@
 # get_template.sh
 
 read -p "What do you want to call it? > " projectName
+read -p "What is the repo URL you want to preview? > " repoURL
 
-if [[ -z $projectName ]]; then
+
+if [[ -z "$projectName" ]]; then
     projectName='sample_template'
 fi
 
-if [[ -n $projectName ]]; then
+if [[ -n "$projectName" ]]; then
     git clone https://github.com/dotHTM/template_jekyll.git "$projectName"
 fi
 
@@ -18,6 +20,12 @@ if [[ -e "$projectName/.git" ]]; then
     git init
     git add *
 
+    if [[ -z "$repoURL" ]]; then
+        echo 'Please clone your repo into "source" at the root level of this project.'
+    else
+        git submodule add $repoURL source
+    fi
+
     # Open in Editor
     editor=''
     if [[ -e `which subl` ]]; then
@@ -26,7 +34,6 @@ if [[ -e "$projectName/.git" ]]; then
 
     if [[ -n $editor ]]; then
         $editor ./
-        $editor ./README.md
     fi
 
     # Open in Git helper

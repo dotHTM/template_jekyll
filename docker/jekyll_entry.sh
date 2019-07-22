@@ -1,5 +1,5 @@
 #!/bin/ash
 
-cd /app/static_src
+cd /app/source
 
 jekyll serve --watch #--incremental
