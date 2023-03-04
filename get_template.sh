@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/env bash
 # get_template.sh
 
 read -p "What do you want to call it? > " projectName
